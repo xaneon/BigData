@@ -11,6 +11,10 @@
     - password: alpine
     - apk_packages: [findutils, curl, openjdk8, openssh, ruby, bash,
                       cracklib-words, supervisor, procps]
+    - hadoop_version: "3.1.1"
+    - hadoop_home: "/usr/local/hadoop"
+    - hadoop_src: "https://archive.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz"
+
   tasks:
   - apk:  # install apk packages
      name: "{{ item }}"
@@ -20,4 +24,15 @@
     file: 
      path: /var/cache/apk/*
      state: absent
+  # maybe add sed etc later
+  - name: Download Hadoop
+    shell: curl {{ hadoop_src }}
+  # TODO: unpack
+  - name: Copy local env.sh to /etc/profile.d/env.sh
+    copy:
+     src: env.sh
+     dest: /etc/profile.d/env.sh 
+  - name: Write /etc/hadoop/hadoop-env.sh
+    shell: echo "export JAVA_HOME=$(readlink -f /usr/bin/java | sed 's:/jre/bin/java::')" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+
 
