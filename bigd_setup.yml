@@ -1,0 +1,26 @@
+---
+- name: Setup BIGD on Alpine
+  hosts: node1 # see hosts.i:w
+  become: true
+  become_user: root
+  become_method: sudo  
+  gather_facts: False # if no Python on target machine
+
+  vars:
+    - username: alpine
+    - password: alpine
+
+  tasks:
+  - apk:
+     name: "{{ item }}"
+     update_cache: yes
+    with_items:
+      - findutils
+      - curl
+      - openjdk8
+      - openssh
+      - ruby
+      - bash
+      - cracklib-words
+      - supervisor
+      - procps
