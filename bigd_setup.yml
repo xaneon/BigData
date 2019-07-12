@@ -14,6 +14,7 @@
     - hadoop_version: "3.1.1"
     - hadoop_home: "/usr/local/hadoop"
     - hadoop_src: "https://archive.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz"
+    - hadoop_config_files: [core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml]
 
   tasks:
   - apk:  # install apk packages
@@ -34,5 +35,14 @@
      dest: /etc/profile.d/env.sh 
   - name: Write /etc/hadoop/hadoop-env.sh
     shell: echo "export JAVA_HOME=$(readlink -f /usr/bin/java | sed 's:/jre/bin/java::')" >> {{ hadoop_home }}/etc/hadoop/hadoop-env.sh
-
+  - name: Copy local supervisord.conf to /etc/supervisord.conf
+    copy:
+     src: supervisord.conf
+     dest: /etc/supervisord.conf
+  - name: Copy Hadoop configuration files
+    copy:
+     src: "{{ item }}"
+     dest: "/usr/local/hadoop/etc/hadoop/{{ item }}"
+    with_items: "{{ hadoop_config_files }}"
+ 
 
