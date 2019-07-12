@@ -25,14 +25,14 @@
      path: /var/cache/apk/*
      state: absent
   # maybe add sed etc later
-  - name: Download Hadoop
-    shell: curl {{ hadoop_src }}
+  # - name: Download Hadoop
+  # shell: curl {{ hadoop_src }}
   # TODO: unpack
   - name: Copy local env.sh to /etc/profile.d/env.sh
     copy:
      src: env.sh
      dest: /etc/profile.d/env.sh 
   - name: Write /etc/hadoop/hadoop-env.sh
-    shell: echo "export JAVA_HOME=$(readlink -f /usr/bin/java | sed 's:/jre/bin/java::')" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+    shell: echo "export JAVA_HOME=$(readlink -f /usr/bin/java | sed 's:/jre/bin/java::')" >> {{ hadoop_home }}/etc/hadoop/hadoop-env.sh
 
 
