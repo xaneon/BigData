@@ -44,5 +44,9 @@
      src: "{{ item }}"
      dest: "/usr/local/hadoop/etc/hadoop/{{ item }}"
     with_items: "{{ hadoop_config_files }}"
+  - name: Copy the start hdfs bash script
+    copy: 
+     src: start_wrapper.sh
+     dest: /usr/local/hadoop/sbin/start-wrapper.sh
  
 
