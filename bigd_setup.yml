@@ -9,18 +9,15 @@
   vars:
     - username: alpine
     - password: alpine
-
+    - apk_packages: [findutils, curl, openjdk8, openssh, ruby, bash,
+                      cracklib-words, supervisor, procps]
   tasks:
-  - apk:
+  - apk:  # install apk packages
      name: "{{ item }}"
      update_cache: yes
-    with_items:
-      - findutils
-      - curl
-      - openjdk8
-      - openssh
-      - ruby
-      - bash
-      - cracklib-words
-      - supervisor
-      - procps
+    with_items: "{{ apk_packages }}"
+  - name: Delete apk cache
+    file: 
+     path: /var/cache/apk/*
+     state: absent
+
