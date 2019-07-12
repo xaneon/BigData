@@ -48,5 +48,14 @@
     copy: 
      src: start_wrapper.sh
      dest: /usr/local/hadoop/sbin/start-wrapper.sh
+  - name: Add java JVM paths to configuration files
+    shell: sed -i -e 's/JAVA=\$JAVA_HOME\/bin\/java/JAVA=\/usr\/lib\/jvm\/default-jvm\/bin\/java/' /usr/local/hadoop/etc/hadoop/yarn-env.sh
+  - name: Add java JVM paths to configuration files
+    shell: sed -i -e 's/export JAVA_HOME=${JAVA_HOME}/export JAVA_HOME=\/usr\/lib\/jvm\/default-jvm\//' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+  # sometimes leads to memory error:
+  # - name: Format the name node
+  #   shell: /bin/bash -l -c "hdfs namenode -format"
+  - name: run supervisord
+    shell: /usr/bin/supervisord -c /etc/supervisord.conf>/dev/null 2>&1 &
  
 
