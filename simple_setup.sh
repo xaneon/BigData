@@ -13,3 +13,4 @@ docker network connect --ip 172.42.0.22 hadoopnet node1
 # TODO: node1 and node2
 # ansible to move hosts file and test connectivity between nodes
 ansible-playbook bigd_setup.yml -i hosts.ini -vvvv
+# docker exec -it master /bin/bash # login without ssh
