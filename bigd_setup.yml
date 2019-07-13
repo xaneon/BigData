@@ -1,6 +1,6 @@
 ---
 - name: Setup BIGD on Alpine
-  hosts: master, node1 # see hosts.i:w
+  hosts: hadoop # see hosts.i:w
   become: true
   become_user: root
   become_method: sudo  
@@ -10,7 +10,7 @@
     - username: alpine
     - password: alpine
     - apk_packages: [findutils, curl, openjdk8, openssh, ruby, bash,
-                      cracklib-words, supervisor, procps]
+                      cracklib-words, supervisor, procps, vim]
     - hadoop_version: "3.1.1"
     - hadoop_home: "/usr/local/hadoop"
     - hadoop_src: "https://archive.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz"
@@ -57,10 +57,8 @@
   #   shell: /bin/bash -l -c "hdfs namenode -format"
   - name: run supervisord
     shell: /usr/bin/supervisord -c /etc/supervisord.conf>/dev/null 2>&1 &
-  - name: Copy hosts to /etc/hosts
+  - name: Copy the bashrc
     copy: 
-     src: hosts
-     dest: /etc/hosts
-     become: yes
- 
+     src: bashrc
+     dest: /root/.bashrc
 
