@@ -1,6 +1,6 @@
 ---
 - name: Setup BIGD on Alpine
-  hosts: node1 # see hosts.i:w
+  hosts: master, node1 # see hosts.i:w
   become: true
   become_user: root
   become_method: sudo  

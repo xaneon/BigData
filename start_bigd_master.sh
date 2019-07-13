@@ -1,5 +1,6 @@
 #!/bin/bash
 
+N=2
 # N=${1:-2}
 # CURR_DIR="$PWD"
 
@@ -10,7 +11,6 @@ docker run \
 	-p 50070:50070 \
 	-p 50075:50075 \
 	-p 50090:50090 \
-	-p 50105:50105 \
 	-p 50030:50030 \
 	-p 50060:50060 \
 	-p 8030:8030 \
@@ -47,6 +47,6 @@ docker run \
 	-p 50020:50020 \
         -d --mount src=/home/bh/Dropbox,target=/home/alpine/Dropbox,type=bind \
 	--name master -h master \
-	xaneon/alpine_x11_base_hdfs3_1_1
+        -e "SLAVES=$N"  xaneon/alpine_x11_base_hdfs3_1_1
 
 
