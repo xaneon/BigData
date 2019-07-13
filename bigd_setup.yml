@@ -57,5 +57,10 @@
   #   shell: /bin/bash -l -c "hdfs namenode -format"
   - name: run supervisord
     shell: /usr/bin/supervisord -c /etc/supervisord.conf>/dev/null 2>&1 &
+  - name: Copy hosts to /etc/hosts
+    copy: 
+     src: hosts
+     dest: /etc/hosts
+     become: yes
  
 

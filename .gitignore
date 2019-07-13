@@ -2,3 +2,7 @@
 .idea/
 README.md
 hosts.ini
+tmp.tmp
+*.retry
+*.swp
+*.*~ 
