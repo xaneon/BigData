@@ -47,6 +47,6 @@ docker run \
 	-p 50020:50020 \
         -d --mount src=/home/bh/Dropbox,target=/home/alpine/Dropbox,type=bind \
 	--name master -h master \
-        -e "SLAVES=$N"  xaneon/alpine_x11_base_hdfs3_1_1
+        -e "SLAVES=$N"  xaneon/alpine_x11_hdfs3_1_1_master
 
 

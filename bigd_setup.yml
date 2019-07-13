@@ -61,4 +61,8 @@
     copy: 
      src: bashrc
      dest: /root/.bashrc
+  - name: run hdfs
+    shell: sh /usr/local/hadoop/sbin/start-dfs.sh>/dev/null 2>&1 &
+  - name: run yarn
+    shell: sh /usr/local/hadoop/sbin/start-yarn.sh>/dev/null 2>&1 &
 
