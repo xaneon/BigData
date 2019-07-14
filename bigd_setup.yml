@@ -1,5 +1,5 @@
 ---
-- name: Setup BIGD on Alpine
+- name: Setup BIGD on Ubuntu
   hosts: hadoop # see hosts.i:w
   become: true
   become_user: root
@@ -7,7 +7,7 @@
   gather_facts: False # if no Python on target machine
 
   vars:
-    - username: alpine
+    - username: root
     - password: alpine
     - apk_packages: [findutils, curl, openjdk8, openssh, ruby, bash,
                       cracklib-words, supervisor, procps, vim]
@@ -17,7 +17,7 @@
     - hadoop_config_files: [core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml]
 
   tasks:
-  - apk:  # install apk packages
+  - apk:  # install apt packages
      name: "{{ item }}"
      update_cache: yes
     with_items: "{{ apk_packages }}"
