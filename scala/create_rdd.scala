@@ -48,3 +48,25 @@ println(finalresult)
 
 // show the directed acyclic graph (DAG)
 println(result.toDebugString)
+
+// let us have a look at an example logfile
+// create the RDD
+// val logFile = sc.textFile("examplelog.txt")
+val logFile = sc.textFile(raw"hdfs://0.0.0.0:19000/test/examplelog.txt")
+
+// Transformations:
+val errors = logFile.filter(_.startsWith("ERROR"))
+val messages = errors.map(_.split("\t")).map(r => r(0))
+
+// Caching:
+messages.cache()
+
+// Actions:
+val n1 = messages.filter(_.contains("example")).count()
+val n2 = messages.filter(_.contains("MySQL")).count()
+println(n1)
+println(n2)
+
+// let us look at the transformations here as well
+println(messages.toDebugString)
+
