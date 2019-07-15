@@ -70,3 +70,8 @@ println(n2)
 // let us look at the transformations here as well
 println(messages.toDebugString)
 
+// key-value pairs in scala
+val pair = ("a", "b")
+println(pair._1)
+println(pair._2)
+
