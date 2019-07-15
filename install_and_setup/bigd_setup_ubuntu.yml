@@ -1,0 +1,63 @@
+---
+- name: Setup BIGD on Alpine
+  hosts: hadoop # see hosts.i:w
+  become: true
+  become_user: root
+  become_method: sudo  
+  gather_facts: False # if no Python on target machine
+
+  vars:
+    - username: root
+    - password: alpine
+    - apt_packages: [findutils, curl, ruby]
+    - hadoop_version: "3.1.1"
+    - hadoop_home: "/usr/local/hadoop"
+    - hadoop_src: "https://archive.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz"
+    - hadoop_config_files: [core-site.xml, hdfs-site.xml, mapred-site.xml, yarn-site.xml]
+
+  tasks:
+  - apt:  # install apk packages
+     name: "{{ item }}"
+     update_cache: yes
+    with_items: "{{ apt_packages }}"
+  # maybe add sed etc later
+  - name: Download Hadoop
+    shell: curl {{ hadoop_src }}
+  # TODO: unpack
+  - name: Copy local env.sh to /etc/profile.d/env.sh
+    copy:
+     src: env.sh
+     dest: /etc/profile.d/env.sh 
+  - name: Write /etc/hadoop/hadoop-env.sh
+    shell: echo "export JAVA_HOME=$(readlink -f /usr/bin/java | sed 's:/jre/bin/java::')" >> {{ hadoop_home }}/etc/hadoop/hadoop-env.sh
+  - name: Copy local supervisord.conf to /etc/supervisord.conf
+    copy:
+     src: supervisord.conf
+     dest: /etc/supervisord.conf
+  - name: Copy Hadoop configuration files
+    copy:
+     src: "{{ item }}"
+     dest: "/usr/local/hadoop/etc/hadoop/{{ item }}"
+    with_items: "{{ hadoop_config_files }}"
+  - name: Copy the start hdfs bash script
+    copy: 
+     src: start_wrapper.sh
+     dest: /usr/local/hadoop/sbin/start-wrapper.sh
+  - name: Add java JVM paths to configuration files
+    shell: sed -i -e 's/JAVA=\$JAVA_HOME\/bin\/java/JAVA=\/usr\/lib\/jvm\/default-jvm\/bin\/java/' /usr/local/hadoop/etc/hadoop/yarn-env.sh
+  - name: Add java JVM paths to configuration files
+    shell: sed -i -e 's/export JAVA_HOME=${JAVA_HOME}/export JAVA_HOME=\/usr\/lib\/jvm\/default-jvm\//' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+  # sometimes leads to memory error:
+  # - name: Format the name node
+  #   shell: /bin/bash -l -c "hdfs namenode -format"
+  - name: run supervisord
+    shell: /usr/bin/supervisord -c /etc/supervisord.conf>/dev/null 2>&1 &
+  - name: Copy the bashrc
+    copy: 
+     src: bashrc
+     dest: /root/.bashrc
+  - name: run hdfs
+    shell: sh /usr/local/hadoop/sbin/start-dfs.sh>/dev/null 2>&1 &
+  - name: run yarn
+    shell: sh /usr/local/hadoop/sbin/start-yarn.sh>/dev/null 2>&1 &
+
