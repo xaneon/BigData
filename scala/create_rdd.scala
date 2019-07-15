@@ -44,3 +44,7 @@ val result = wordsmap.reduceByKey((a,b) => a + b)
 println(result)
 val finalresult = result.collect()
 println(finalresult)
+// end interactive mode with :quit
+
+// show the directed acyclic graph (DAG)
+println(result.toDebugString)
