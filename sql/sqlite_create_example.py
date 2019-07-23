@@ -17,5 +17,9 @@ users.create()
 # insert some users
 i = users.insert()
 i.execute(name="Mary", age=30, password="secret")
+user_dicts = ({"name": "John", "age": 42},
+              {"name": "Susan", "age": 57},
+              {"name": "Carl", "age": 33})
+i.execute(*user_dicts)
 
 
