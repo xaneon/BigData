@@ -1,8 +1,14 @@
+import os
+import time
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
 
-# engine = create_engine("sqlite:///:memory", echo=True)
-# engine = create_engine("sqlite:///test.db", echo=True)
-db = create_engine("sqlite:///test.db", echo=False)
+fname = "test.db"
+
+os.remove(f"{fname}")
+
+time.sleep(.5)
+
+db = create_engine(f"sqlite:///{fname}", echo=False)
 
 metadata = MetaData(db)
 
@@ -22,4 +28,16 @@ user_dicts = ({"name": "John", "age": 42},
               {"name": "Carl", "age": 33})
 i.execute(*user_dicts)
 
+s = users.select()
+rs = s.execute()
+
+row = rs.fetchone()
+print(row)  # the whole row
+print("ID", row[0])
+print("Name:", row["name"])
+print("Age:", row.age)
+print("Password:", row[users.c.password])
+
+for row in rs:
+    print(row.name, "is", row.age, "years old")
 
