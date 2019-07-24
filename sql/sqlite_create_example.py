@@ -1,6 +1,7 @@
 import os
 import time
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from sqlalchemy.sql import text
 
 fname = "test.db"
 
@@ -41,3 +42,7 @@ print("Password:", row[users.c.password])
 for row in rs:
     print(row.name, "is", row.age, "years old")
 
+query = text("SELECT * FROM users WHERE age > 40;")
+test = db.execute(query)
+
+print(test, test.fetchall())
