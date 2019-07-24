@@ -1,11 +1,12 @@
 import psycopg2
+from getpass import getpass
 
 try:
-    connection = psycopg2.connect(user="sysadmin",
-                                  password="asdffdsa",
+    connection = psycopg2.connect(user="postgres",
+                                  password=getpass(),
                                   host="127.0.0.1",
                                   port="5432",
-                                  database="postgrew_db")
+                                  database="postgres")
     cursor = connection.cursor()
     print(connection.get_dsn_parameters(), "\n")
 
