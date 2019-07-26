@@ -5,4 +5,5 @@ hosts.ini
 tmp.tmp
 *.retry
 *.swp
-*.*~ 
+*.*~
+*.db

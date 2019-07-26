@@ -6,7 +6,8 @@ println(b)
 
 val distData = sc.parallelize(b) // parallelise b
 
-val dataDir = raw"C:\Users\caumont\Dropbox\Data\"
+// val dataDir = raw"C:\Users\caumont\Dropbox\Data\"
+val dataDir = raw"Z:\Dropbox\Data"
 val file = "README.md"
 val fname = dataDir.concat(file)
 val fname2 = dataDir + file
@@ -17,7 +18,8 @@ val readme = sc.textFile(fname)
 println(readme.count())
 
 // let us read a file from hdfs:
-val line = sc.textFile(raw"hdfs://0.0.0.0:19000/test/data.txt")
+//val line = sc.textFile(raw"hdfs://0.0.0.0:19000/test/data.txt")
+val line = sc.textFile(raw"hdfs://0.0.0.0:9000/test/data.txt")
 println(line)
 
 // next, we are going to apply a transformation
@@ -35,7 +37,8 @@ println(r)
 
 // MapReduce example:
 // val lines = sc.textFile("data.txt")
-val lines = sc.textFile(raw"hdfs://0.0.0.0:19000/test/data.txt")
+// val lines = sc.textFile(raw"hdfs://0.0.0.0:19000/test/data.txt")
+val lines = sc.textFile(raw"hdfs://0.0.0.0:9000/test/data.txt")
 val words = lines.flatMap(line => line.split(" "))
 println(words)
 val wordsmap = words.map(word => (word, 1))
@@ -52,7 +55,8 @@ println(result.toDebugString)
 // let us have a look at an example logfile
 // create the RDD
 // val logFile = sc.textFile("examplelog.txt")
-val logFile = sc.textFile(raw"hdfs://0.0.0.0:19000/test/examplelog.txt")
+// val logFile = sc.textFile(raw"hdfs://0.0.0.0:19000/test/examplelog.txt")
+val logFile = sc.textFile(raw"hdfs://0.0.0.0:9000/test/examplelog.txt")
 
 // Transformations:
 val errors = logFile.filter(_.startsWith("ERROR"))

@@ -1,0 +1,4 @@
+This is just an example file with
+a couple of
+lines and some words which are will be repeated
+a couple of times.

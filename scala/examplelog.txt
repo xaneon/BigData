@@ -1,0 +1,9 @@
+ERROR   This is an example error
+SYSLOG  Interface up
+SYSLOG  Interface down
+SYSLOG  IP address changed
+ERROR   MySQL database failed to connect
+SYSLOG  Interface down
+
+
+
