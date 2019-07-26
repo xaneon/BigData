@@ -131,9 +131,9 @@
       "status": "FINISHED"
     },
     {
-      "text": "%spark\n// val sqlContext \u003d new org.apache.spark.sql.hive.HiveContext(sc)\nval sqlContext \u003d new org.apache.spark.sql.SQLContext(sc)  // hiveql\nval geolocation \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").load(\"hdfs:///tmp/data/geolocation.csv\")\nval trucks \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").load(\"hdfs:///tmp/data/trucks.csv\")\ngeolocation.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"geolocation\") // already exists\ntrucks.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"trucks\") // already exists\n\nval tables \u003d sqlContext.sql(\"show tables\")\ntables.show()\n",
+      "text": "%spark\n// val sqlContext \u003d new org.apache.spark.sql.hive.HiveContext(sc)\nval sqlContext \u003d new org.apache.spark.sql.SQLContext(sc)  // hiveql\nval geolocation \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").option(\"inferSchema\", \"true\").load(\"hdfs:///tmp/data/geolocation.csv\")\nval trucks \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").option(\"inferSchema\", \"true\").load(\"hdfs:///tmp/data/trucks.csv\")\ngeolocation.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"geolocation\") // already exists\ntrucks.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"trucks\") // already exists\n\nval tables \u003d sqlContext.sql(\"show tables\")\ntables.show()",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:14:56.418",
+      "dateUpdated": "2019-07-26 17:25:37.750",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -159,7 +159,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n+--------+-----------+-----------+\n|database|  tableName|isTemporary|\n+--------+-----------+-----------+\n| default|geolocation|      false|\n| default|     trucks|      false|\n|        |geolocation|       true|\n+--------+-----------+-----------+\n\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SQLContext\u001b[0m \u003d org.apache.spark.sql.SQLContext@254f21a0\n\u001b[1m\u001b[34mgeolocation\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtrucks\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtables\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [database: string, tableName: string ... 1 more field]\n"
+            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n+--------+-----------+-----------+\n|database|  tableName|isTemporary|\n+--------+-----------+-----------+\n| default|geolocation|      false|\n| default|     trucks|      false|\n|        |   foodmart|       true|\n|        |geolocation|       true|\n+--------+-----------+-----------+\n\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SQLContext\u001b[0m \u003d org.apache.spark.sql.SQLContext@174b1b25\n\u001b[1m\u001b[34mgeolocation\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtrucks\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtables\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [database: string, tableName: string ... 1 more field]\n"
           }
         ]
       },
@@ -168,14 +168,14 @@
       "jobName": "paragraph_1564134354413_54903508",
       "id": "paragraph_1564134354413_54903508",
       "dateCreated": "2019-07-26 11:45:54.413",
-      "dateStarted": "2019-07-26 16:14:56.461",
-      "dateFinished": "2019-07-26 16:14:59.117",
+      "dateStarted": "2019-07-26 17:25:37.790",
+      "dateFinished": "2019-07-26 17:25:39.654",
       "status": "FINISHED"
     },
     {
       "text": "%sql\nselect * from geolocation limit 10\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:15:13.104",
+      "dateUpdated": "2019-07-26 17:25:41.424",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -251,14 +251,14 @@
       "jobName": "paragraph_1564134915141_-14904016",
       "id": "paragraph_1564134915141_-14904016",
       "dateCreated": "2019-07-26 11:55:15.141",
-      "dateStarted": "2019-07-26 16:15:13.166",
-      "dateFinished": "2019-07-26 16:15:13.367",
+      "dateStarted": "2019-07-26 17:25:41.471",
+      "dateFinished": "2019-07-26 17:25:41.625",
       "status": "FINISHED"
     },
     {
       "text": "%sql\nselect * from trucks limit 10\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:15:36.162",
+      "dateUpdated": "2019-07-26 17:25:49.311",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -334,14 +334,14 @@
       "jobName": "paragraph_1564138151198_-1475676986",
       "id": "paragraph_1564138151198_-1475676986",
       "dateCreated": "2019-07-26 12:49:11.199",
-      "dateStarted": "2019-07-26 16:15:32.948",
-      "dateFinished": "2019-07-26 16:15:33.156",
+      "dateStarted": "2019-07-26 17:25:49.363",
+      "dateFinished": "2019-07-26 17:25:49.606",
       "status": "FINISHED"
     },
     {
       "text": "%sql\nshow tables",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:17:16.025",
+      "dateUpdated": "2019-07-26 17:25:56.966",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -397,7 +397,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "database\ttableName\tisTemporary\ndefault\tgeolocation\tfalse\ndefault\ttrucks\tfalse\n\tgeolocation\ttrue\n"
+            "data": "database\ttableName\tisTemporary\ndefault\tgeolocation\tfalse\ndefault\ttrucks\tfalse\n\tfoodmart\ttrue\n\tgeolocation\ttrue\n"
           },
           {
             "type": "TEXT",
@@ -410,14 +410,14 @@
       "jobName": "paragraph_1564150532941_-1086027479",
       "id": "paragraph_1564150532941_-1086027479",
       "dateCreated": "2019-07-26 16:15:32.941",
-      "dateStarted": "2019-07-26 16:17:13.056",
-      "dateFinished": "2019-07-26 16:17:13.288",
+      "dateStarted": "2019-07-26 17:25:57.029",
+      "dateFinished": "2019-07-26 17:25:57.099",
       "status": "FINISHED"
     },
     {
       "text": "%sql\ndescribe trucks",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:17:31.382",
+      "dateUpdated": "2019-07-26 17:26:06.560",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -456,10 +456,32 @@
                   },
                   "updated": false,
                   "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
                 }
               },
-              "commonSetting": {}
-            }
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "col_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "data_type",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
           }
         },
         "enabled": true
@@ -473,7 +495,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "col_name\tdata_type\tcomment\ntruckid\tstring\tnull\ndriverid\tstring\tnull\nevent\tstring\tnull\nlatitude\tstring\tnull\nlongitude\tstring\tnull\ncity\tstring\tnull\nstate\tstring\tnull\nvelocity\tstring\tnull\nevent_ind\tstring\tnull\nidling_ind\tstring\tnull\n"
+            "data": "col_name\tdata_type\tcomment\ntruckid\tstring\tnull\ndriverid\tstring\tnull\nevent\tstring\tnull\nlatitude\tdouble\tnull\nlongitude\tdouble\tnull\ncity\tstring\tnull\nstate\tstring\tnull\nvelocity\tint\tnull\nevent_ind\tint\tnull\nidling_ind\tint\tnull\n"
           },
           {
             "type": "TEXT",
@@ -486,14 +508,14 @@
       "jobName": "paragraph_1564150633050_542210229",
       "id": "paragraph_1564150633050_542210229",
       "dateCreated": "2019-07-26 16:17:13.050",
-      "dateStarted": "2019-07-26 16:17:28.615",
-      "dateFinished": "2019-07-26 16:17:28.840",
+      "dateStarted": "2019-07-26 17:26:06.614",
+      "dateFinished": "2019-07-26 17:26:06.688",
       "status": "FINISHED"
     },
     {
       "text": "%sql\nshow create table geolocation",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:18:23.245",
+      "dateUpdated": "2019-07-26 17:26:13.807",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -547,7 +569,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "createtab_stmt\nCREATE TABLE `geolocation` (`truckid` STRING, `driverid` STRING, `event` STRING, `latitude` STRING, `longitude` STRING, `city` STRING, `state` STRING, `velocity` STRING, `event_ind` STRING, `idling_ind` STRING)\nUSING orc\n"
+            "data": "createtab_stmt\nCREATE TABLE `geolocation` (`truckid` STRING, `driverid` STRING, `event` STRING, `latitude` DOUBLE, `longitude` DOUBLE, `city` STRING, `state` STRING, `velocity` INT, `event_ind` INT, `idling_ind` INT)\nUSING orc\n"
           },
           {
             "type": "TEXT",
@@ -560,14 +582,14 @@
       "jobName": "paragraph_1564150648605_23980601",
       "id": "paragraph_1564150648605_23980601",
       "dateCreated": "2019-07-26 16:17:28.606",
-      "dateStarted": "2019-07-26 16:18:21.368",
-      "dateFinished": "2019-07-26 16:18:21.524",
+      "dateStarted": "2019-07-26 17:26:13.862",
+      "dateFinished": "2019-07-26 17:26:13.957",
       "status": "FINISHED"
     },
     {
       "text": "%sql\ndescribe formatted geolocation",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:18:52.345",
+      "dateUpdated": "2019-07-26 17:26:18.904",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -636,8 +658,8 @@
       "jobName": "paragraph_1564150694908_415379057",
       "id": "paragraph_1564150694908_415379057",
       "dateCreated": "2019-07-26 16:18:14.908",
-      "dateStarted": "2019-07-26 16:18:49.466",
-      "dateFinished": "2019-07-26 16:18:49.597",
+      "dateStarted": "2019-07-26 17:26:18.967",
+      "dateFinished": "2019-07-26 17:26:19.058",
       "status": "FINISHED"
     },
     {
@@ -687,7 +709,7 @@
     {
       "text": "%sql\nshow tables\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:26:19.215",
+      "dateUpdated": "2019-07-26 17:26:27.928",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -743,7 +765,7 @@
         "msg": [
           {
             "type": "TABLE",
-            "data": "database\ttableName\tisTemporary\ndefault\tgeolocation\tfalse\ndefault\ttrucks\tfalse\n\tgeolocation\ttrue\n"
+            "data": "database\ttableName\tisTemporary\ndefault\tgeolocation\tfalse\ndefault\ttrucks\tfalse\n\tfoodmart\ttrue\n\tgeolocation\ttrue\n"
           },
           {
             "type": "TEXT",
@@ -756,8 +778,8 @@
       "jobName": "paragraph_1564151150300_936801614",
       "id": "paragraph_1564151150300_936801614",
       "dateCreated": "2019-07-26 16:25:50.300",
-      "dateStarted": "2019-07-26 16:26:16.361",
-      "dateFinished": "2019-07-26 16:26:16.488",
+      "dateStarted": "2019-07-26 17:26:27.980",
+      "dateFinished": "2019-07-26 17:26:28.060",
       "status": "FINISHED"
     },
     {
@@ -807,7 +829,7 @@
     {
       "text": "%pyspark\nimport pandas as pd\ndf \u003d pd.read_csv(\"/media/sf_caumont/Dropbox/Data/foodmart.csv\")\nsdf \u003d sqlContext.createDataFrame(df)\nsdf.registerTempTable(\"foodmart\")\n\n# sdf.show()",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:50:28.872",
+      "dateUpdated": "2019-07-26 17:26:32.129",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -837,14 +859,14 @@
       "jobName": "paragraph_1564151176358_1794550046",
       "id": "paragraph_1564151176358_1794550046",
       "dateCreated": "2019-07-26 16:26:16.359",
-      "dateStarted": "2019-07-26 16:50:28.937",
-      "dateFinished": "2019-07-26 16:50:32.257",
+      "dateStarted": "2019-07-26 17:26:32.187",
+      "dateFinished": "2019-07-26 17:26:35.693",
       "status": "FINISHED"
     },
     {
       "text": "%sql\nselect * from foodmart limit 10",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:51:05.472",
+      "dateUpdated": "2019-07-26 17:26:51.841",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -980,10 +1002,32 @@
                   },
                   "updated": false,
                   "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
                 }
               },
-              "commonSetting": {}
-            }
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Acetominifen",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Anchovies",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
           }
         },
         "enabled": true
@@ -1010,14 +1054,100 @@
       "jobName": "paragraph_1564152027797_-1293174212",
       "id": "paragraph_1564152027797_-1293174212",
       "dateCreated": "2019-07-26 16:40:27.798",
-      "dateStarted": "2019-07-26 16:50:50.549",
-      "dateFinished": "2019-07-26 16:50:50.896",
+      "dateStarted": "2019-07-26 17:26:38.797",
+      "dateFinished": "2019-07-26 17:26:39.119",
       "status": "FINISHED"
+    },
+    {
+      "text": "%md\n## Truckmileage",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 16:54:58.171",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTruckmileage\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564152742916_1970800365",
+      "id": "paragraph_1564152742916_1970800365",
+      "dateCreated": "2019-07-26 16:52:22.917",
+      "dateStarted": "2019-07-26 16:54:58.175",
+      "dateFinished": "2019-07-26 16:54:58.201",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sql\ncreate table truckmileade stored as orc as select truckid from trucks\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 17:27:50.194",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Hive support is required to CREATE Hive TABLE (AS SELECT);;\n\u0027CreateTable `truckmileade`, org.apache.hadoop.hive.ql.io.orc.OrcSerde, ErrorIfExists\n+- Project [truckid#6103]\n   +- SubqueryAlias `default`.`trucks`\n      +- Relation[truckid#6103,driverid#6104,event#6105,latitude#6106,longitude#6107,city#6108,state#6109,velocity#6110,event_ind#6111,idling_ind#6112] orc\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564153981715_563181442",
+      "id": "paragraph_1564153981715_563181442",
+      "dateCreated": "2019-07-26 17:13:01.715",
+      "dateStarted": "2019-07-26 17:27:50.256",
+      "dateFinished": "2019-07-26 17:27:50.280",
+      "status": "ERROR"
     },
     {
       "text": "%sql\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 16:52:22.917",
+      "dateUpdated": "2019-07-26 17:27:50.253",
       "config": {},
       "settings": {
         "params": {},
@@ -1025,9 +1155,9 @@
       },
       "apps": [],
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1564152742916_1970800365",
-      "id": "paragraph_1564152742916_1970800365",
-      "dateCreated": "2019-07-26 16:52:22.917",
+      "jobName": "paragraph_1564154870253_-416112780",
+      "id": "paragraph_1564154870253_-416112780",
+      "dateCreated": "2019-07-26 17:27:50.253",
       "status": "READY"
     }
   ],
