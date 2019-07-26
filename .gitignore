@@ -7,3 +7,5 @@ tmp.tmp
 *.swp
 *.*~
 *.db
+install_and_setup/bashrc
+install_and_setup/hosts
