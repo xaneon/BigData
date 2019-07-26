@@ -1,0 +1,175 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Test a few functions of the Zeppelin notebook",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:43:02.349",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTest a few functions of the Zeppelin notebook\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133885871_-359676545",
+      "id": "paragraph_1564133885871_-359676545",
+      "dateCreated": "2019-07-26 11:38:05.871",
+      "dateStarted": "2019-07-26 11:43:02.367",
+      "dateFinished": "2019-07-26 11:43:02.411",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%md\nLoad `geolocation.csv` and `trucks.csv` into HDFS:",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:45:19.537",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eLoad \u003ccode\u003egeolocation.csv\u003c/code\u003e and \u003ccode\u003etrucks.csv\u003c/code\u003e into HDFS:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564134153669_-1486330024",
+      "id": "paragraph_1564134153669_-1486330024",
+      "dateCreated": "2019-07-26 11:42:33.669",
+      "dateStarted": "2019-07-26 11:45:19.586",
+      "dateFinished": "2019-07-26 11:45:19.658",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sh \nhdfs dfs -mkdir -p /tmp/data\nhdfs dfs -copyFromLocal -f /media/sf_caumont/Dropbox/Data/geolocation.csv /tmp/data/geolocation.csv\nhdfs dfs -copyFromLocal -f /media/sf_caumont/Dropbox/Data/geolocation.csv /tmp/data/trucks.csv\nhdfs dfs -chmod -R +rw /tmp/data\nhdfs dfs -ls /tmp/data\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:52:16.288",
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Found 2 items\n-rw-rw-rw-   1 hadoop supergroup     526677 2019-07-26 11:52 /tmp/data/geolocation.csv\n-rw-rw-rw-   1 hadoop supergroup     526677 2019-07-26 11:52 /tmp/data/trucks.csv\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564134319534_-1831404401",
+      "id": "paragraph_1564134319534_-1831404401",
+      "dateCreated": "2019-07-26 11:45:19.535",
+      "dateStarted": "2019-07-26 11:52:16.361",
+      "dateFinished": "2019-07-26 11:52:36.075",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sh\nhive",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:52:36.085",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564134354413_54903508",
+      "id": "paragraph_1564134354413_54903508",
+      "dateCreated": "2019-07-26 11:45:54.413",
+      "status": "READY"
+    }
+  ],
+  "name": "tutorial_test",
+  "id": "2EGQ5X3CA",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-SNAPSHOT",
+  "permissions": {},
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {},
+  "path": "/tutorial_test"
+}
