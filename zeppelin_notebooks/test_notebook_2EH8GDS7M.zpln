@@ -1,0 +1,279 @@
+{
+  "paragraphs": [
+    {
+      "text": "%python\nimport pandas as pd\nimport numpy as np\nimport matplotlib as mpl\nimport matplotlib.pyplot as plt\n\nmpl.use(\"agg\")\nplt.figure()\nplt.plot(np.random.randint(0, 10, 100), \"r.\")\nz.show(plt)\nplt.close()",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:24:25.352",
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv style\u003d\u0027width:auto;height:auto\u0027\u003e\u003cimg src\u003ddata:image/png;base64,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c81npufOR4QAAMkELACAZAOPPvroo2UX0e9GRkbKLqGSzDWfmeYz0/Yw13xmem78DRYAQDIfEQIAJBOwSrRly5aYP39+zJs3LzZs2FB2OT1p7969ceONN8bChQtj0aJFsXHjxoiIeO+99+Lmm2+OK6+8Mm6++eZ4//33S66090xOTsaSJUvijjvuiIiI3bt3x7Jly2LevHnxta99LSYmJkqusPccOnQoVq9eHVdffXUsWLAgGo2GtfoZPfnkk7Fo0aJYvHhx3HXXXXH06FFrdQruvffemDlzZixevPjj751qbRZFEd/+9rdj3rx58ZWvfCW2b99eVtldTcAqyeTkZDzwwAPx6quvxs6dO+P555+PnTt3ll1Wz5k+fXo88cQTsXPnzti2bVv85Cc/iZ07d8aGDRti+fLlsWvXrli+fLkAOwUbN26MBQsWfPz1d7/73fjOd74T//znP+Piiy+On/70pyVW15sefPDBuPXWW+Pvf/97/O1vf4sFCxZYq5/B/v374+mnn45msxlvvvlmTE5OxubNm63VKfjGN74RW7Zs+cT3TrU2X3311di1a1fs2rUrNm3aFPfff38ZJXe/glJs3bq1uOWWWz7++rHHHisee+yxEiuqhhUrVhS//e1vi6uuuqo4cOBAURRFceDAgeKqq64qubLesnfv3uKmm24qxsbGittvv7346KOPii9+8YvFsWPHiqI4cf1yZocOHSrmzJlTfPTRR5/4vrU6dfv27StmzZpVvPvuu8WxY8eK22+/vdiyZYu1OkW7d+8uFi1a9PHXp1qb69atK5577rmTPo7/zx2skuzfvz8uv/zyj7+eNWtW7N+/v8SKet+ePXtix44dsWzZsnj77bfjsssui4iISy+9NN5+++2Sq+stDz30UDz++OPxuc+1fkW8++67cdFFF8X06dMjwnqdit27d8fQ0FB885vfjCVLlsR9990Xhw8ftlY/g+Hh4XjkkUdi9uzZcdlll8WFF14YIyMj1mqSU61N16+zI2BRCR9++GGsWrUqnnrqqbjgggs+8bNp06bFtGnTSqqs97z88ssxc+ZM/0l2suPHj8f27dvj/vvvjx07dsT5559/wseB1uq5ef/99+PFF1+M3bt3x4EDB+Lw4cMnfMxFDmvz3AlYJRkeHo69e/d+/PW+fftieHi4xIp617Fjx2LVqlVx9913x8qVKyMi4ktf+lK89dZbERHx1ltvxcyZM8sssae88cYb8dJLL8WcOXNizZo18frrr8eDDz4Yhw4diuPHj0eE9ToVs2bNilmzZsWyZcsiImL16tWxfft2a/UzeO211+KKK66IoaGhOO+882LlypXxxhtvWKtJTrU2Xb/OjoBVkqVLl8auXbti9+7dMTExEZs3b44VK1aUXVbPKYoi1q5dGwsWLIiHH3744++vWLEinn322YiIePbZZ+POO+8sq8Ses379+ti3b1/s2bMnNm/eHDfddFP88pe/jBtvvDFeeOGFiDDTqbj00kvj8ssvj3/84x8RETE2NhYLFy60Vj+D2bNnx7Zt2+LIkSNRFMXHM7VWc5xqba5YsSJ+/vOfR1EUsW3btrjwwgs//iiR/6PkvwHra6+88kpx5ZVXFnPnzi1++MMfll1OT/rDH/5QRERxzTXXFNdee21x7bXXFq+88krxzjvvFDfddFMxb968Yvny5cW7775bdqk96Xe/+11x++23F0VRFP/617+KpUuXFv/zP/9TrF69ujh69GjJ1fWeHTt2FCMjI8U111xT3HnnncV7771nrX5G3//+94v58+cXixYtKu65557i6NGj1uoUrFmzprj00kuL6dOnF8PDw8UzzzxzyrX50UcfFd/61reKuXPnFosXLy7+8pe/lFx9d/J/cgcASOYjQgCAZAIWAEAyAQsAIJmABQCQTMACAEgmYAEAJBOwAACSCVgAAMkELACAZAIWAEAyAQsAIJmABQCQTMACAEgmYAEAJBOwAACSCVgAAMkELACAZAIWAEAyAQsAIJmABQCQTMACAEgmYAEAJBOwAACSCVgAAMkELACAZAIWAEAyAQsAIJmABQCQ7P8BAk4u1T2QiOcAAAAASUVORK5CYII\u003d style\u003d\u0027width\u003dauto;height:auto\u0027\u003e\u003cdiv\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564132954290_-971893340",
+      "id": "paragraph_1564132954290_-971893340",
+      "dateCreated": "2019-07-26 11:22:34.290",
+      "dateStarted": "2019-07-26 11:24:25.421",
+      "dateFinished": "2019-07-26 11:24:25.984",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\nvar a \u003d 42",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:24:41.539",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34ma\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m \u003d 42\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133038955_675549590",
+      "id": "paragraph_1564133038955_675549590",
+      "dateCreated": "2019-07-26 11:23:58.955",
+      "dateStarted": "2019-07-26 11:24:41.585",
+      "dateFinished": "2019-07-26 11:25:14.161",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sh\nhdfs dfs -ls /\njps\nss -tunelp",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:28:12.011",
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Found 4 items\ndrwxr-xr-x   - hadoop supergroup          0 2019-07-26 11:10 /hbase\ndrwxr-xr-x   - hadoop supergroup          0 2019-07-25 09:43 /test\ndrwxrwxr-x   - hadoop supergroup          0 2019-07-25 12:48 /tmp\ndrwxr-xr-x   - hadoop supergroup          0 2019-07-25 10:58 /user\n4352 SecondaryNameNode\n5895 HQuorumPeer\n9800 Jps\n6089 HRegionServer\n9450 RemoteInterpreterServer\n5964 HMaster\n8941 ZeppelinServer\n4117 DataNode\n3925 NameNode\n5145 ResourceManager\n9276 RemoteInterpreterServer\n5310 NodeManager\n9374 SparkSubmit\nNetid State   Recv-Q  Send-Q         Local Address:Port      Peer Address:Port                                                                                  \nudp   UNCONN  0       0                    0.0.0.0:34666          0.0.0.0:*      ino:19263 sk:1 \u003c-\u003e                                                             \nudp   UNCONN  0       0                    0.0.0.0:44343          0.0.0.0:*      uid:110 ino:17169 sk:2 \u003c-\u003e                                                     \nudp   UNCONN  0       0              127.0.0.53%lo:53             0.0.0.0:*      uid:101 ino:14196 sk:3 \u003c-\u003e                                                     \nudp   UNCONN  0       0                    0.0.0.0:68             0.0.0.0:*      ino:21430 sk:4 \u003c-\u003e                                                             \nudp   UNCONN  0       0                  127.0.0.1:161            0.0.0.0:*      ino:20278 sk:5 \u003c-\u003e                                                             \nudp   UNCONN  0       0                    0.0.0.0:5353           0.0.0.0:*      uid:110 ino:17167 sk:6 \u003c-\u003e                                                     \nudp   UNCONN  0       0                    0.0.0.0:1701           0.0.0.0:*      ino:23747 sk:7 \u003c-\u003e                                                             \nudp   UNCONN  0       0                       [::]:48534             [::]:*      uid:110 ino:17170 sk:8 v6only:1 \u003c-\u003e                                            \nudp   UNCONN  0       0                       [::]:5353              [::]:*      uid:110 ino:17168 sk:9 v6only:1 \u003c-\u003e                                            \ntcp   LISTEN  0       5                  127.0.0.1:37613          0.0.0.0:*      users:((\"python3\",pid\u003d9569,fd\u003d4)) uid:1001 ino:98780 sk:36 \u003c-\u003e                 \ntcp   LISTEN  0       128                  0.0.0.0:80             0.0.0.0:*      ino:19212 sk:a \u003c-\u003e                                                             \ntcp   LISTEN  0       128                127.0.0.1:44021          0.0.0.0:*      users:((\"java\",pid\u003d4117,fd\u003d206)) uid:1001 ino:39922 sk:b \u003c-\u003e                   \ntcp   LISTEN  0       128            127.0.0.53%lo:53             0.0.0.0:*      uid:101 ino:14197 sk:c \u003c-\u003e                                                     \ntcp   LISTEN  0       128                  0.0.0.0:50070          0.0.0.0:*      users:((\"java\",pid\u003d3925,fd\u003d202)) uid:1001 ino:39406 sk:d \u003c-\u003e                   \ntcp   LISTEN  0       128                  0.0.0.0:22             0.0.0.0:*      ino:27405 sk:e \u003c-\u003e                                                             \ntcp   LISTEN  0       5                  127.0.0.1:631            0.0.0.0:*      ino:17235 sk:f \u003c-\u003e                                                             \ntcp   LISTEN  0       128                  0.0.0.0:50010          0.0.0.0:*      users:((\"java\",pid\u003d4117,fd\u003d195)) uid:1001 ino:35725 sk:10 \u003c-\u003e                  \ntcp   LISTEN  0       128                  0.0.0.0:50075          0.0.0.0:*      users:((\"java\",pid\u003d4117,fd\u003d246)) uid:1001 ino:40044 sk:11 \u003c-\u003e                  \ntcp   LISTEN  0       128                  0.0.0.0:50020          0.0.0.0:*      users:((\"java\",pid\u003d4117,fd\u003d248)) uid:1001 ino:40048 sk:12 \u003c-\u003e                  \ntcp   LISTEN  0       128                127.0.0.1:9000           0.0.0.0:*      users:((\"java\",pid\u003d3925,fd\u003d211)) uid:1001 ino:35507 sk:13 \u003c-\u003e                  \ntcp   LISTEN  0       128                127.0.0.1:27017          0.0.0.0:*      uid:120 ino:20376 sk:14 \u003c-\u003e                                                    \ntcp   LISTEN  0       128                  0.0.0.0:50090          0.0.0.0:*      users:((\"java\",pid\u003d4352,fd\u003d205)) uid:1001 ino:40251 sk:15 \u003c-\u003e                  \ntcp   LISTEN  0       128                        *:16301                *:*      users:((\"java\",pid\u003d6089,fd\u003d359)) uid:1001 ino:51263 sk:24 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128       [::ffff:10.0.2.15]:40463                *:*      users:((\"java\",pid\u003d9374,fd\u003d293)) uid:1001 ino:92813 sk:2e v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50                         *:9999                 *:*      users:((\"java\",pid\u003d8941,fd\u003d456)) uid:1001 ino:80765 sk:2f v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                     [::]:80                [::]:*      ino:19213 sk:16 v6only:1 \u003c-\u003e                                                   \ntcp   LISTEN  0       128       [::ffff:10.0.2.15]:40113                *:*      users:((\"java\",pid\u003d9374,fd\u003d309)) uid:1001 ino:92923 sk:37 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                     [::]:22                [::]:*      ino:27407 sk:17 v6only:1 \u003c-\u003e                                                   \ntcp   LISTEN  0       2                      [::1]:3350              [::]:*      ino:21226 sk:18 v6only:1 \u003c-\u003e                                                   \ntcp   LISTEN  0       5                      [::1]:631               [::]:*      ino:17234 sk:19 v6only:1 \u003c-\u003e                                                   \ntcp   LISTEN  0       128                        *:8088                 *:*      users:((\"java\",pid\u003d5145,fd\u003d233)) uid:1001 ino:45292 sk:1a v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50        [::ffff:127.0.1.1]:36989                *:*      users:((\"java\",pid\u003d9276,fd\u003d36)) uid:1001 ino:84914 sk:30 v6only:0 \u003c-\u003e          \ntcp   LISTEN  0       50                         *:34173                *:*      users:((\"java\",pid\u003d8941,fd\u003d468)) uid:1001 ino:84333 sk:31 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       2                          *:3389                 *:*      uid:118 ino:24088 sk:1b v6only:0 \u003c-\u003e                                           \ntcp   LISTEN  0       128                        *:8030                 *:*      users:((\"java\",pid\u003d5145,fd\u003d213)) uid:1001 ino:47332 sk:1c v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                        *:8031                 *:*      users:((\"java\",pid\u003d5145,fd\u003d202)) uid:1001 ino:47113 sk:1d v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128       [::ffff:127.0.1.1]:16000                *:*      users:((\"java\",pid\u003d5964,fd\u003d314)) uid:1001 ino:51239 sk:27 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                        *:8032                 *:*      users:((\"java\",pid\u003d5145,fd\u003d223)) uid:1001 ino:45287 sk:1e v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50                         *:43297                *:*      users:((\"java\",pid\u003d9374,fd\u003d260)) uid:1001 ino:90288 sk:32 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50                         *:43649                *:*      users:((\"java\",pid\u003d9276,fd\u003d27)) uid:1001 ino:88490 sk:33 v6only:0 \u003c-\u003e          \ntcp   LISTEN  0       128                        *:8033                 *:*      users:((\"java\",pid\u003d5145,fd\u003d238)) uid:1001 ino:45944 sk:1f v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                        *:41537                *:*      users:((\"java\",pid\u003d5310,fd\u003d202)) uid:1001 ino:45891 sk:20 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50                         *:2181                 *:*      users:((\"java\",pid\u003d5895,fd\u003d140)) uid:1001 ino:49821 sk:21 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50        [::ffff:127.0.1.1]:37767                *:*      users:((\"java\",pid\u003d9374,fd\u003d348)) uid:1001 ino:98421 sk:38 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       1                          *:4040                 *:*      users:((\"java\",pid\u003d9374,fd\u003d264)) uid:1001 ino:88805 sk:34 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                        *:8040                 *:*      users:((\"java\",pid\u003d5310,fd\u003d213)) uid:1001 ino:45899 sk:22 v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       50                         *:40297                *:*      users:((\"java\",pid\u003d9450,fd\u003d27)) uid:1001 ino:92779 sk:35 v6only:0 \u003c-\u003e          \ntcp   LISTEN  0       128       [::ffff:127.0.1.1]:16201                *:*      users:((\"java\",pid\u003d6089,fd\u003d314)) uid:1001 ino:54307 sk:2b v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                        *:16010                *:*      users:((\"java\",pid\u003d5964,fd\u003d359)) uid:1001 ino:53889 sk:2c v6only:0 \u003c-\u003e         \ntcp   LISTEN  0       128                        *:8042                 *:*      users:((\"java\",pid\u003d5310,fd\u003d223)) uid:1001 ino:45916 sk:23 v6only:0 \u003c-\u003e         \n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133081578_-896713488",
+      "id": "paragraph_1564133081578_-896713488",
+      "dateCreated": "2019-07-26 11:24:41.578",
+      "dateStarted": "2019-07-26 11:28:12.071",
+      "dateFinished": "2019-07-26 11:28:16.633",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nimport sys\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:25:32.573",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133096196_776044906",
+      "id": "paragraph_1564133096196_776044906",
+      "dateCreated": "2019-07-26 11:24:56.196",
+      "dateStarted": "2019-07-26 11:25:32.663",
+      "dateFinished": "2019-07-26 11:25:35.415",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nimport pandas as pd\nimport numpy as np\ntest \u003d pd.DataFrame(data\u003d{\"A\": np.random.randint(0, 10, 100)})\ntest.head()",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:26:58.617",
+      "config": {
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "   A\n0  8\n1  7\n2  9\n3  7\n4  3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133164548_1275497582",
+      "id": "paragraph_1564133164548_1275497582",
+      "dateCreated": "2019-07-26 11:26:04.549",
+      "dateStarted": "2019-07-26 11:26:58.675",
+      "dateFinished": "2019-07-26 11:26:59.361",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%sql\nselect * from test",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:27:42.716",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Table or view not found: test; line 1 pos 14\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133132647_965534762",
+      "id": "paragraph_1564133132647_965534762",
+      "dateCreated": "2019-07-26 11:25:32.647",
+      "dateStarted": "2019-07-26 11:27:42.769",
+      "dateFinished": "2019-07-26 11:27:42.816",
+      "status": "ERROR"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 11:27:11.179",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564133231179_310078407",
+      "id": "paragraph_1564133231179_310078407",
+      "dateCreated": "2019-07-26 11:27:11.179",
+      "status": "READY"
+    }
+  ],
+  "name": "test_notebook",
+  "id": "2EH8GDS7M",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-SNAPSHOT",
+  "permissions": {},
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {},
+  "path": "/test_notebook"
+}
