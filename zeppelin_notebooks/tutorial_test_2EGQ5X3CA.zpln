@@ -131,9 +131,9 @@
       "status": "FINISHED"
     },
     {
-      "text": "%spark\nval sqlContext \u003d new org.apache.spark.sql.hive.HiveContext(sc)\nval geolocation \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").load(\"hdfs:///tmp/data/geolocation.csv\")\ngeolocation.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"geolocation\") // already exists\nval tables \u003d sqlContext.sql(\"show tables\")\ntables.show()\n",
+      "text": "%spark\n// val sqlContext \u003d new org.apache.spark.sql.hive.HiveContext(sc)\nval sqlContext \u003d new org.apache.spark.sql.SQLContext(sc)  // hiveql\nval geolocation \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").load(\"hdfs:///tmp/data/geolocation.csv\")\nval trucks \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").load(\"hdfs:///tmp/data/trucks.csv\")\ngeolocation.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"geolocation\") // already exists\ntrucks.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"trucks\") // already exists\n\nval tables \u003d sqlContext.sql(\"show tables\")\ntables.show()\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 12:54:45.904",
+      "dateUpdated": "2019-07-26 16:14:56.418",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -159,7 +159,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n+--------+-----------+-----------+\n|database|  tableName|isTemporary|\n+--------+-----------+-----------+\n| default|geolocation|      false|\n+--------+-----------+-----------+\n\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.hive.HiveContext\u001b[0m \u003d org.apache.spark.sql.hive.HiveContext@660a1a5c\n\u001b[1m\u001b[34mgeolocation\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtables\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [database: string, tableName: string ... 1 more field]\n"
+            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n+--------+-----------+-----------+\n|database|  tableName|isTemporary|\n+--------+-----------+-----------+\n| default|geolocation|      false|\n| default|     trucks|      false|\n|        |geolocation|       true|\n+--------+-----------+-----------+\n\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SQLContext\u001b[0m \u003d org.apache.spark.sql.SQLContext@254f21a0\n\u001b[1m\u001b[34mgeolocation\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtrucks\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtables\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [database: string, tableName: string ... 1 more field]\n"
           }
         ]
       },
@@ -168,14 +168,14 @@
       "jobName": "paragraph_1564134354413_54903508",
       "id": "paragraph_1564134354413_54903508",
       "dateCreated": "2019-07-26 11:45:54.413",
-      "dateStarted": "2019-07-26 12:54:46.018",
-      "dateFinished": "2019-07-26 12:54:48.195",
+      "dateStarted": "2019-07-26 16:14:56.461",
+      "dateFinished": "2019-07-26 16:14:59.117",
       "status": "FINISHED"
     },
     {
       "text": "%sql\nselect * from geolocation limit 10\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 12:54:52.974",
+      "dateUpdated": "2019-07-26 16:15:13.104",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -251,23 +251,23 @@
       "jobName": "paragraph_1564134915141_-14904016",
       "id": "paragraph_1564134915141_-14904016",
       "dateCreated": "2019-07-26 11:55:15.141",
-      "dateStarted": "2019-07-26 12:54:52.104",
-      "dateFinished": "2019-07-26 12:54:52.529",
+      "dateStarted": "2019-07-26 16:15:13.166",
+      "dateFinished": "2019-07-26 16:15:13.367",
       "status": "FINISHED"
     },
     {
-      "text": "",
+      "text": "%sql\nselect * from trucks limit 10\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 12:49:49.882",
+      "dateUpdated": "2019-07-26 16:15:36.162",
       "config": {
         "editorSetting": {
-          "language": "scala",
+          "language": "sql",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
+        "editorMode": "ace/mode/sql",
         "fontSize": 9.0,
         "runOnSelectionChange": true,
         "title": false,
@@ -283,16 +283,16 @@
                   "tableGridState": {},
                   "tableColumnTypeState": {
                     "names": {
-                      "_c0": "string",
-                      "_c1": "string",
-                      "_c2": "string",
-                      "_c3": "string",
-                      "_c4": "string",
-                      "_c5": "string",
-                      "_c6": "string",
-                      "_c7": "string",
-                      "_c8": "string",
-                      "_c9": "string"
+                      "truckid": "string",
+                      "driverid": "string",
+                      "event": "string",
+                      "latitude": "string",
+                      "longitude": "string",
+                      "city": "string",
+                      "state": "string",
+                      "velocity": "string",
+                      "event_ind": "string",
+                      "idling_ind": "string"
                     },
                     "updated": false
                   },
@@ -317,27 +317,31 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "msg": [
           {
+            "type": "TABLE",
+            "data": "truckid\tdriverid\tevent\tlatitude\tlongitude\tcity\tstate\tvelocity\tevent_ind\tidling_ind\nA54\tA54\tnormal\t38.440467\t-122.714431\tSanta Rosa\tCalifornia\t17\t0\t0\nA20\tA20\tnormal\t36.977173\t-121.899402\tAptos\tCalifornia\t27\t0\t0\nA40\tA40\toverspeed\t37.957702\t-121.29078\tStockton\tCalifornia\t77\t1\t0\nA31\tA31\tnormal\t39.409608\t-123.355566\tWillits\tCalifornia\t22\t0\t0\nA71\tA71\tnormal\t33.683947\t-117.794694\tIrvine\tCalifornia\t43\t0\t0\nA50\tA50\tnormal\t38.40765\t-122.947713\tOccidental\tCalifornia\t0\t0\t1\nA51\tA51\tnormal\t37.639097\t-120.996878\tModesto\tCalifornia\t0\t0\t1\nA19\tA19\tnormal\t37.962146\t-122.345526\tSan Pablo\tCalifornia\t0\t0\t1\nA77\tA77\tnormal\t37.962146\t-122.345526\tSan Pablo\tCalifornia\t25\t0\t0\nA92\tA92\tnormal\t37.484938\t-119.966284\tMariposa\tCalifornia\t0\t0\t1\n"
+          },
+          {
             "type": "TEXT",
-            "data": "org.apache.zeppelin.interpreter.InterpreterNotFoundException: No such interpreter: hive"
+            "data": ""
           }
         ]
       },
       "apps": [],
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1564138011250_992968441",
-      "id": "paragraph_1564138011250_992968441",
-      "dateCreated": "2019-07-26 12:46:51.250",
-      "dateStarted": "2019-07-26 12:49:11.203",
-      "dateFinished": "2019-07-26 12:49:11.677",
-      "status": "ERROR"
+      "jobName": "paragraph_1564138151198_-1475676986",
+      "id": "paragraph_1564138151198_-1475676986",
+      "dateCreated": "2019-07-26 12:49:11.199",
+      "dateStarted": "2019-07-26 16:15:32.948",
+      "dateFinished": "2019-07-26 16:15:33.156",
+      "status": "FINISHED"
     },
     {
       "text": "%sql\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 12:49:11.199",
+      "dateUpdated": "2019-07-26 16:15:32.941",
       "config": {},
       "settings": {
         "params": {},
@@ -345,9 +349,9 @@
       },
       "apps": [],
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1564138151198_-1475676986",
-      "id": "paragraph_1564138151198_-1475676986",
-      "dateCreated": "2019-07-26 12:49:11.199",
+      "jobName": "paragraph_1564150532941_-1086027479",
+      "id": "paragraph_1564150532941_-1086027479",
+      "dateCreated": "2019-07-26 16:15:32.941",
       "status": "READY"
     }
   ],
