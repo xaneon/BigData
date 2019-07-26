@@ -1103,18 +1103,60 @@
       "status": "FINISHED"
     },
     {
-      "text": "%sql\ncreate table truckmileade stored as orc as select truckid from trucks\n",
+      "text": "%spark\nval sqlContext \u003d new org.apache.spark.sql.hive.HiveContext(sc)\n//val sqlContext \u003d new org.apache.spark.sql.SQLContext(sc)  // hiveql\n//sqlContext.sql(\"create table truckmileage stored as orc as select truckid, driverid from trucks\")\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 17:27:50.194",
+      "dateUpdated": "2019-07-26 17:38:23.803",
       "config": {
         "editorSetting": {
-          "language": "sql",
+          "language": "scala",
           "editOnDblClick": false,
           "completionSupport": true,
           "completionKey": "TAB"
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "runOnSelectionChange": true,
+        "title": false,
+        "checkEmpty": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.hive.HiveContext\u001b[0m \u003d org.apache.spark.sql.hive.HiveContext@6310ef7d\n"
+          }
+        ]
+      },
+      "apps": [],
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1564153981715_563181442",
+      "id": "paragraph_1564153981715_563181442",
+      "dateCreated": "2019-07-26 17:13:01.715",
+      "dateStarted": "2019-07-26 17:38:23.894",
+      "dateFinished": "2019-07-26 17:38:24.487",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\nimport java.sql.{DriverManager, Connection, Statement, ResultSet}\nval url \u003d \"jdbc:hive2://localhost:10000\"\nval driver \u003d \"org.apache.hive.jdbc.HiveDriver\"\nval user \u003d \"hadoop\"\nval password \u003d \"hadoop\"\nClass.forName(driver).newInstance\nval conn: Connection \u003d DriverManager.getConnection(url, user, password)\nval r: ResultSet \u003d conn.createStatement.executeQuery(\"SELECT * FROM trucks\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-07-26 17:41:41.713",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
         "fontSize": 9.0,
         "runOnSelectionChange": true,
         "title": false,
@@ -1131,23 +1173,23 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Hive support is required to CREATE Hive TABLE (AS SELECT);;\n\u0027CreateTable `truckmileade`, org.apache.hadoop.hive.ql.io.orc.OrcSerde, ErrorIfExists\n+- Project [truckid#6103]\n   +- SubqueryAlias `default`.`trucks`\n      +- Relation[truckid#6103,driverid#6104,event#6105,latitude#6106,longitude#6107,city#6108,state#6109,velocity#6110,event_ind#6111,idling_ind#6112] orc\n\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+            "data": "java.sql.SQLException: Could not open client transport with JDBC Uri: jdbc:hive2://localhost:10000: java.net.ConnectException: Connection refused (Connection refused)\n  at org.apache.hive.jdbc.HiveConnection.openTransport(HiveConnection.java:231)\n  at org.apache.hive.jdbc.HiveConnection.\u003cinit\u003e(HiveConnection.java:176)\n  at org.apache.hive.jdbc.HiveDriver.connect(HiveDriver.java:105)\n  at java.sql.DriverManager.getConnection(DriverManager.java:664)\n  at java.sql.DriverManager.getConnection(DriverManager.java:247)\n  ... 45 elided\nCaused by: org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused (Connection refused)\n  at org.apache.thrift.transport.TSocket.open(TSocket.java:226)\n  at org.apache.thrift.transport.TSaslTransport.open(TSaslTransport.java:266)\n  at org.apache.thrift.transport.TSaslClientTransport.open(TSaslClientTransport.java:38)\n  at org.apache.hive.jdbc.HiveConnection.openTransport(HiveConnection.java:204)\n  ... 49 more\nCaused by: java.net.ConnectException: Connection refused (Connection refused)\n  at java.net.PlainSocketImpl.socketConnect(Native Method)\n  at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\n  at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\n  at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\n  at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\n  at java.net.Socket.connect(Socket.java:589)\n  at org.apache.thrift.transport.TSocket.open(TSocket.java:221)\n  ... 52 more\n"
           }
         ]
       },
       "apps": [],
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1564153981715_563181442",
-      "id": "paragraph_1564153981715_563181442",
-      "dateCreated": "2019-07-26 17:13:01.715",
-      "dateStarted": "2019-07-26 17:27:50.256",
-      "dateFinished": "2019-07-26 17:27:50.280",
+      "jobName": "paragraph_1564154870253_-416112780",
+      "id": "paragraph_1564154870253_-416112780",
+      "dateCreated": "2019-07-26 17:27:50.253",
+      "dateStarted": "2019-07-26 17:41:41.821",
+      "dateFinished": "2019-07-26 17:41:43.278",
       "status": "ERROR"
     },
     {
-      "text": "%sql\n",
+      "text": "%spark\n",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 17:27:50.253",
+      "dateUpdated": "2019-07-26 17:39:12.950",
       "config": {},
       "settings": {
         "params": {},
@@ -1155,9 +1197,9 @@
       },
       "apps": [],
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1564154870253_-416112780",
-      "id": "paragraph_1564154870253_-416112780",
-      "dateCreated": "2019-07-26 17:27:50.253",
+      "jobName": "paragraph_1564155552949_1621747109",
+      "id": "paragraph_1564155552949_1621747109",
+      "dateCreated": "2019-07-26 17:39:12.950",
       "status": "READY"
     }
   ],
