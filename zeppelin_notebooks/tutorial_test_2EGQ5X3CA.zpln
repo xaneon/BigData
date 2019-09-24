@@ -133,7 +133,7 @@
     {
       "text": "%spark\n// val sqlContext \u003d new org.apache.spark.sql.hive.HiveContext(sc)\nval sqlContext \u003d new org.apache.spark.sql.SQLContext(sc)  // hiveql\nval geolocation \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").option(\"inferSchema\", \"true\").load(\"hdfs:///tmp/data/geolocation.csv\")\nval trucks \u003d sqlContext.read.format(\"csv\").option(\"header\", \"true\").option(\"inferSchema\", \"true\").load(\"hdfs:///tmp/data/trucks.csv\")\ngeolocation.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"geolocation\") // already exists\ntrucks.write.mode(\"overwrite\").format(\"orc\").saveAsTable(\"trucks\") // already exists\n\nval tables \u003d sqlContext.sql(\"show tables\")\ntables.show()",
       "user": "anonymous",
-      "dateUpdated": "2019-07-26 17:25:37.750",
+      "dateUpdated": "2019-07-29 16:27:09.181",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -159,7 +159,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n+--------+-----------+-----------+\n|database|  tableName|isTemporary|\n+--------+-----------+-----------+\n| default|geolocation|      false|\n| default|     trucks|      false|\n|        |   foodmart|       true|\n|        |geolocation|       true|\n+--------+-----------+-----------+\n\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SQLContext\u001b[0m \u003d org.apache.spark.sql.SQLContext@174b1b25\n\u001b[1m\u001b[34mgeolocation\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtrucks\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtables\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [database: string, tableName: string ... 1 more field]\n"
+            "data": "\u001b[33mwarning: \u001b[0mthere was one deprecation warning; re-run with -deprecation for details\n+--------+-----------+-----------+\n|database|  tableName|isTemporary|\n+--------+-----------+-----------+\n| default|geolocation|      false|\n| default|     trucks|      false|\n|        |   foodmart|       true|\n|        |geolocation|       true|\n+--------+-----------+-----------+\n\n\u001b[1m\u001b[34msqlContext\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.SQLContext\u001b[0m \u003d org.apache.spark.sql.SQLContext@4fd808cf\n\u001b[1m\u001b[34mgeolocation\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtrucks\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [truckid: string, driverid: string ... 8 more fields]\n\u001b[1m\u001b[34mtables\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [database: string, tableName: string ... 1 more field]\n"
           }
         ]
       },
@@ -168,8 +168,8 @@
       "jobName": "paragraph_1564134354413_54903508",
       "id": "paragraph_1564134354413_54903508",
       "dateCreated": "2019-07-26 11:45:54.413",
-      "dateStarted": "2019-07-26 17:25:37.790",
-      "dateFinished": "2019-07-26 17:25:39.654",
+      "dateStarted": "2019-07-29 16:27:09.865",
+      "dateFinished": "2019-07-29 16:27:23.351",
       "status": "FINISHED"
     },
     {
